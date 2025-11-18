@@ -14,7 +14,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ✅ SEGURO: Usar variable de entorno
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 class Message(BaseModel):
@@ -24,7 +23,7 @@ class Message(BaseModel):
 def root():
     return {"message": "Servidor en la nube ✅"}
 
-@app.post("/chat")
+@app.post("/chat")  # ✅ ESTE ENDPOINT ES IMPORTANTE
 def chat(message: Message):
     try:
         print(f"Mensaje recibido: {message.text}")
